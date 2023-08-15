@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: excelup
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-default_abap-trial-9725b806trial-dev
+          url: https://c75f608d-4148-434a-88e1-64b75d24911a.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZAA_EXCEL_UP_1
+          package: ZAA_EXCEL_UP_1
+          transport: TRLK905975
+        exclude:
+          - /test/
